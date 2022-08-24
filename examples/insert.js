@@ -15,7 +15,7 @@ function run(){
             price: 0
         }
     ]
-    
+    //returning é opcional
     const insertPromise = database
         .insert(data)
         .into('games')
@@ -23,6 +23,8 @@ function run(){
             ['id', 'name', 'price']
         );
     
+    console.log(insertPromise.toQuery());
+
     insertPromise
         .then(data => {
             console.log(data);
