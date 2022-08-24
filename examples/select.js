@@ -29,7 +29,6 @@ function run(){
         .catch(err => {
             console.error(err);
         })
-
 }
 
 module.exports = run;
