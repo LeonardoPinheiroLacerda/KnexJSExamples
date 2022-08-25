@@ -6,10 +6,10 @@ const del = require('./examples/delete');
 const update = require('./examples/update');
 const orderby = require('./examples/orderby');
 
-//insert();
+insert();
 //select();
 //where();
 //raw();
 //del();
 //update();
-orderby();
+//orderby();
