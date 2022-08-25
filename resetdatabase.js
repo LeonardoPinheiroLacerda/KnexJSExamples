@@ -1,7 +1,7 @@
 const database = require('./database');
 const fs = require('fs');
 
-function run(){
+async function run(){
 
     const sql = fs.readFileSync('./sql/script.sql', {encoding: 'utf-8'});
 
@@ -9,12 +9,7 @@ function run(){
     
     console.log(dropCreatePromise.toQuery());
     
-    dropCreatePromise
-        .then(data => {})
-        .catch(err => {
-            console.log('err: ' + err);
-        });
-
+    return dropCreatePromise;
 }
 
 module.exports = run;

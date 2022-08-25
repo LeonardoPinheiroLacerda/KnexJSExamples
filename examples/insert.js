@@ -1,6 +1,6 @@
 const database = require('./../database');
 
-function run(){
+async function run(){
 
     const data = [
         {
@@ -30,14 +30,12 @@ function run(){
     
     console.log(insertPromise.toQuery());
 
-    insertPromise
-        .then(data => {
-            console.log(data);
-            insertStudio();
-        })
-        .catch(err => {
-            console.error(err);
-        });    
+    const games = await insertPromise;   
+    console.log(games);
+    const studios = await insertStudio();
+    console.log(studios);
+    const gamesStudios = await insertGameStudio();
+    console.log(gamesStudios);
 
 }
 
@@ -67,14 +65,7 @@ function insertStudio() {
 
     console.log(insertStudioPromise.toQuery());
 
-    insertStudioPromise
-        .then(data => {
-            console.log(data);
-            insertGameStudio();
-        })
-        .catch(err => {
-            console.error(err);
-        });
+    return insertStudioPromise;
 }
 
 function insertGameStudio(){
@@ -108,13 +99,7 @@ function insertGameStudio(){
 
     console.log(insertPromise.toQuery());
 
-    insertPromise
-        .then(data => {
-            console.log(data);
-        })
-        .catch(err => {
-            console.error(err);
-        });
+    return insertPromise;
 
 }
 

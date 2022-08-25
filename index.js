@@ -8,15 +8,21 @@ const del = require('./examples/delete');
 const update = require('./examples/update');
 const orderby = require('./examples/orderby');
 const innerjoin = require('./examples/innerjoin');
+const transactions = require('./examples/transaction');
 
-//apaga todas as tabelas e as recriam.
-//resetdatabase();
+async function main() {
+    //apaga todas as tabelas e as recriam.
+    await resetdatabase();
 
-//insert();
-//select();
-//where();
-//raw();
-//del();
-//update();
-//orderby();
-innerjoin();
+    await insert();
+    //select();
+    //where();
+    //raw();
+    //del();
+    //update();
+    //orderby();
+    //innerjoin();
+    await transactions();
+}
+
+main();
