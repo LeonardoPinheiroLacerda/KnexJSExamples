@@ -9,6 +9,7 @@ const update = require('./examples/update');
 const orderby = require('./examples/orderby');
 const innerjoin = require('./examples/innerjoin');
 const transactions = require('./examples/transaction');
+const transactions2 = require('./examples/transaction2');
 
 async function main() {
     //apaga todas as tabelas e as recriam.
@@ -23,6 +24,7 @@ async function main() {
     //orderby();
     //innerjoin();
     await transactions();
+    await transactions2();
 }
 
 main();
