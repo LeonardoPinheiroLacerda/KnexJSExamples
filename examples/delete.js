@@ -1,21 +1,16 @@
 const database = require('./../database');
 
-function run(){
+async function run(){
 
     const deletePromise = database
         .delete()
         .table('games')
-        .where({id: 20});
+        .where({id: 1});
 
     console.log(deletePromise.toQuery());
 
-    deletePromise
-        .then(data => {
-            console.log(data);
-        })
-        .catch(err => {
-            console.log(err);
-        });
+    const deletedRecords = await deletePromise;
+    console.log('Foi deletado ' + deletedRecords + ' game.');
 
 }
 

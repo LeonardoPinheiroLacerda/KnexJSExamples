@@ -19,7 +19,12 @@ async function run() {
             .transacting(trans);     
     });
    
-    await transaction;
+    try{
+        await transaction;
+        console.log("Transação concluida!");
+    }catch(err){
+        console.log("Transação finalizada com esse, realizando o rollback!");
+    }
 
 }
 

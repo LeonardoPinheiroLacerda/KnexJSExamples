@@ -1,34 +1,15 @@
 const database = require('./../database');
 
-function run(){
-    const selectPromise = database
-        .select()
-        .table('games');
-    
-    console.log(selectPromise.toQuery());
-
-    selectPromise
-        .then(data => {
-            console.log(data);
-        })
-        .catch(err => {
-            console.error(err);
-        });
-
+async function run(){
 
     const selectPromise2 = database
-        .select(['id', 'name'])
+        .select(['id', 'name']) //Se não houver argumentos serão listados todos os campos
         .table('games');
     
     console.log(selectPromise2.toQuery());
 
-    selectPromise2
-        .then(data => {
-            console.log(data);
-        })
-        .catch(err => {
-            console.error(err);
-        })
+    const games = await selectPromise2;
+    console.log(games);
 }
 
 module.exports = run;

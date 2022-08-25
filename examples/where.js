@@ -1,36 +1,16 @@
 const database = require('./../database');
 
-function run() {
-    const wherePromise = database
-        .select()
-        .table('games')
-        .where({name: 'Valorant'});
-
-    console.log(wherePromise.toQuery());
-
-    wherePromise
-        .then(data => {
-            console.log(data)
-        })
-        .catch(err => {
-            console.log(err);
-        });
-
+async function run() {
     const wherePromise2 = database
         .select()
         .table('games')
         .where({name: 'Valorant'})
-        .andWhere({id: 15});
+        .andWhere({id: 3});
 
     console.log(wherePromise2.toQuery());
 
-    wherePromise2
-        .then(data => {
-            console.log(data)
-        })
-        .catch(err => {
-            console.log(err);
-        });
+    const games = await wherePromise2
+    console.log(games);
 }
 
 module.exports = run;

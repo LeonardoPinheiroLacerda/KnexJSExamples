@@ -1,21 +1,16 @@
 const database = require('./../database');
 
-function run(){
+async function run(){
 
     const orderByPromise = database
         .select()
         .table('games')
-        .orderBy('price', 'desc');
+        .orderBy('price', 'asc');
 
     console.log(orderByPromise.toQuery());
 
-    orderByPromise
-        .then(data => {
-            console.log(data);
-        })
-        .catch(err => {
-            console.log(err);
-        });
+    const games = await orderByPromise;
+    console.log(games);
 
 }
 

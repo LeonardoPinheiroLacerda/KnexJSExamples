@@ -1,21 +1,16 @@
 const database = require('../database');
 
-function run(){
+async function run() {
 
     const updatePromise = database
-        .update({price: 10})
+        .update({ price: 35 })
         .table('games')
-        .where({id: 19});
+        .where({ id: 4 });
 
     console.log(updatePromise.toQuery());
 
-    updatePromise
-        .then(data => {
-            console.log(data);
-        })
-        .catch(err => {
-            console.log(err);
-        });
+    const updatedRecords = await updatePromise;
+    console.log('Foi atualizado ' + updatedRecords + ' jogo.');
 
 }
 
