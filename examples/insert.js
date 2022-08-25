@@ -39,10 +39,16 @@ function run(){
 }
 
 function insertStudio(id) {
-    const studioData = {
-        name: 'Activision',
-        game_id: id
-    };
+    const studioData = [
+        {
+            name: 'Activision',
+            game_id: id
+        },
+        {
+            name: 'Activision 2',
+            game_id: id
+        }
+    ];
 
     const insertStudioPromise = database
         .insert(studioData)
