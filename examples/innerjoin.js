@@ -1,6 +1,6 @@
 const database = require('./../database');
 
-function run(){
+function run() {
 
     const innerjoinPromise = database
         .select(
@@ -8,16 +8,21 @@ function run(){
                 'games.*',
                 'studios.name as studio_name'
             ]
-        )   
+        )
         .table('games')
         .innerJoin(
-            'studios',          //table
-            'studios.game_id',  //column A
-            'games.id'          //column B
+            'games_studios',            //table
+            'games_studios.game_id',    //column A
+            'games.id'                  //column B
+        )
+        .innerJoin(
+            'studios',                  //table
+            'games_studios.studio_id',  //column A
+            'studios.id'                //column B
         )
         .where(
             {
-                'studios.id' : 1
+                'studios.id': 1
             }
         )
 
@@ -39,18 +44,23 @@ function run(){
                 'games.*',
                 'studios.name as studio_name'
             ]
-        )   
+        )
         .table('games')
         .innerJoin(
-            'studios',          //table
-            'studios.game_id',  //column A
-            'games.id'          //column B
+            'games_studios',            //table
+            'games_studios.game_id',    //column A
+            'games.id'                  //column B
+        )
+        .innerJoin(
+            'studios',                  //table
+            'games_studios.studio_id',  //column A
+            'studios.id'                //column B
         )
         .where(
             {
-                'games.id' : 1
+                'games.id': 4
             }
-        )
+        );
 
     console.log(innerjoinPromise2.toQuery());
 
@@ -64,7 +74,7 @@ function run(){
             }
 
             data.forEach(g => {
-                game.studios.push({name: g.studio_name})
+                game.studios.push({ name: g.studio_name })
             });
 
             console.log(game);
