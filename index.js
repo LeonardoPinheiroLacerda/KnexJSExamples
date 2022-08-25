@@ -3,9 +3,11 @@ const select = require('./examples/select');
 const where = require('./examples/where');
 const raw = require('./examples/raw');
 const del = require('./examples/delete');
+const update = require('./examples/update');
 
 //insert();
 //select();
 //where();
 //raw();
-del();
+//del();
+update();
